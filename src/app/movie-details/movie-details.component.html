@@ -1,0 +1,44 @@
+<div *ngIf="movie; else errorContent" class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <img
+        class="card-img-top"
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        [alt]="movie.original_title"
+      />
+      <div class="card-body">
+        <h1 class="card-title">{{ movie.original_title }}</h1>
+        <p class="card-text">
+          <strong>Release Date:</strong> {{ movie.release_date }}
+        </p>
+        <p class="card-text">
+          <strong>Vote Average:</strong> {{ movie.vote_average }}
+        </p>
+        <p class="card-text">
+          <strong>Vote Count:</strong> {{ movie.vote_count }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">{{ movie.original_title }}</h1>
+        <p class="card-text">
+          <strong>{{ movie.tagline }}</strong>
+        </p>
+        <p class="card-text">{{ movie.overview }}</p>
+        <p class="card-text">
+          <strong>Original Language:</strong> {{ movie.original_language }}
+        </p>
+        <p class="card-text"><strong>Adult:</strong> {{ movie.adult }}</p>
+        <p class="card-text"><strong>Homepage: </strong><a [href]="movie?.homepage" target="_blank">{{""+movie.homepage}}</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #errorContent>
+  <p>{{ errorMessage }}</p>
+</ng-template>

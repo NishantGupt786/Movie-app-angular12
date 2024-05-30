@@ -1,0 +1,27 @@
+<!-- movies.component.html -->
+<div class="card">
+  <a [routerLink]="['/movie', movie?.id]">
+    <img
+      class="card-img-top"
+      [src]="'http://image.tmdb.org/t/p/w500' + movie?.poster_path"
+      alt="Movie Poster"
+  /></a>
+  <div class="card-body">
+    <h5
+      class="card-title"
+      style="text-align: center; font-weight: bolder; font-size: large"
+    >
+      {{ movie?.original_title }}
+    </h5>
+    <p class="card-text">
+      <strong>Language:</strong> {{ movie?.original_language }}
+    </p>
+    <!-- <p class="card-text"><strong>Overview:</strong> {{ movie?.overview }}</p> -->
+    <p class="card-text">
+      <strong>Vote Average:</strong> {{ movie?.vote_average }} / 10
+    </p>
+    <p class="card-text">
+      <strong>Total Votes:</strong> {{ movie?.vote_count }}
+    </p>
+  </div>
+</div>

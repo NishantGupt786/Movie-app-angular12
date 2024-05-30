@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="">Movie <span class="brand-highlight" style="color: yellow">Next</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ng-container *ngIf="showDropdowns">
+        <select class="form-control nav-select" id="genreSelect" [(ngModel)]="listGenre" (ngModelChange)="updateGenre($event)">
+          <option value="" disabled selected>Genre</option>
+          <option value="28">Action</option>
+          <option value="35">Comedy</option>
+          <option value="18">Drama</option>
+          <option value="27">Horror</option>
+          <option value="12">Adventure</option>
+          <option value="16">Animation</option>
+          <option value="80">Crime</option>
+          <option value="18">Drama</option>
+          <option value="14">Fantasy</option>
+          <option value="10751">Family</option>
+        </select>
+        <select class="form-control nav-select" id="languageSelect" [(ngModel)]="listLanguage" (ngModelChange)="updateLanguage($event)">
+          <option value="" disabled selected>Language</option>
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="hi">Hindi</option>
+          <option value="ko">Korean</option>
+          <option value="ja">Japanese</option>
+        </select>
+        <select class="form-control nav-select" id="yearSelect" [(ngModel)]="listYear" (ngModelChange)="updateYear($event)">
+          <option value="" disabled selected>Year</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+        </select>
+      </ng-container>
+    </div>
+  </nav>
+  
