@@ -18,6 +18,9 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
+# Build the Angular application for production
+RUN ng build
+
 # Expose the default Angular port
 EXPOSE 4200
 
