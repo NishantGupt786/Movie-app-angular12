@@ -10,9 +10,9 @@ import { Movie, MovieResponse } from './app.interface';
 })
 export class AppComponent implements OnInit {
   title = 'movie-app';
-  genre: any;
-  language: any;
-  year: any;
+  genre: string | undefined;
+  language: string | undefined;
+  year: number | undefined;
   movies: Movie[] | undefined = [];
   showDropdowns: boolean = true;
 
@@ -39,15 +39,30 @@ export class AppComponent implements OnInit {
   onGenreChange(genre: string): void {
     this.genre = genre;
     console.log('Genre Selected:', this.genre);
+    this.discoverMovies();
   }
 
   onLanguageChange(language: string): void {
     this.language = language;
     console.log('Language Selected:', this.language);
+    this.discoverMovies();
   }
 
   onYearChange(year: string): void {
-    this.year = year;
+    this.year = parseInt(year, 10);
     console.log('Year Selected:', this.year);
+    this.discoverMovies();
+  }
+
+  discoverMovies(): void {
+    this.movieService.discoverMovies(this.language, this.year, this.genre).subscribe(
+      (data: MovieResponse) => {
+        this.movies = data.results;
+        console.log('Discovered Movies:', data.results);
+      },
+      (error) => {
+        console.log('Error:', error);
+      }
+    );
   }
 }
